@@ -45,6 +45,13 @@ class Tunigo(object):
                 genres.append(Genre(item_array=item['genre']))
         return genres
 
+    def get_genre_playlists(self, genre_key, subgenre_key=''):
+        if subgenre_key and subgenre_key != 'all':
+            options = 'filter={}'.format(subgenre_key)
+        else:
+            options = ''
+        return self.get_playlists(genre_key, options)
+
     def get_new_releases(self):
         releases = []
         for item in self._get('new-releases'):
