@@ -28,8 +28,7 @@ class Tunigo(object):
     def get_playlists(self, key, options=''):
         playlists = []
         for item in self._get(key, options):
-            playlists.append(Playlist(item['playlist']['uri'],
-                                      item['playlist']['title']))
+            playlists.append(Playlist(item_array=item['playlist']))
         return playlists
 
     def get_featured_playlists(self):
@@ -42,15 +41,12 @@ class Tunigo(object):
     def get_genres(self):
         genres = []
         for item in self._get('genres'):
-            key = item['genre']['templateName']
-            if key != 'toplists':
-                genres.append(Genre(key, item['genre']['name']))
+            if item['genre']['templateName'] != 'toplists':
+                genres.append(Genre(item_array=item['genre']))
         return genres
 
     def get_new_releases(self):
         releases = []
         for item in self._get('new-releases'):
-            releases.append(Release(item['release']['uri'],
-                                    item['release']['artistName'],
-                                    item['release']['albumName']))
+            releases.append(Release(item_array=item['release']))
         return releases
