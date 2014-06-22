@@ -24,6 +24,7 @@ setup(
     include_package_data=True,
     install_requires=[
         'setuptools',
+        'requests >= 2.0.0',
     ],
     test_suite='nose.collector',
     tests_require=[
