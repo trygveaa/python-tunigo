@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 import tunigo
+from tunigo import utils
 
 
 class Playlist(object):
@@ -23,22 +24,29 @@ class Playlist(object):
                  item_array=None):
 
         if item_array:
-            self._created = int(item_array['created'])
-            self._description = item_array['description']
-            self._id = item_array['id']
-            self._image = item_array['image']
-            self._location = item_array['location']
-            self._main_genre = tunigo.Genre(
-                playlist=self,
-                template_name=item_array['mainGenreTemplate'])
-            self._num_subscribers = int(item_array['numSubscribers'])
-            self._sub_genre = tunigo.SubGenre(
-                key=item_array['subGenreTemplate'],
-                main_genre=self._main_genre)
-            self._title = item_array['title']
-            self._updated = int(item_array['updated'])
-            self._uri = item_array['uri']
-            self._version = int(item_array['version'])
+            utils.set_instance_int_variables(
+                self,
+                ['_created', '_num_subscribers', '_updated', '_version'],
+                item_array)
+            utils.set_instance_string_variables(
+                self,
+                ['_description', '_id', '_image', '_location', '_title',
+                 '_uri'],
+                item_array)
+
+            if 'mainGenreTemplate' in item_array:
+                self._main_genre = tunigo.Genre(
+                    playlist=self,
+                    template_name=item_array['mainGenreTemplate'])
+            else:
+                self._main_genre = tunigo.Genre()
+
+            if 'subGenreTemplate' in item_array:
+                self._sub_genre = tunigo.SubGenre(
+                    key=item_array['subGenreTemplate'],
+                    main_genre=self._main_genre)
+            else:
+                self._sub_genre = tunigo.SubGenre()
 
         else:
             self._created = int(created)

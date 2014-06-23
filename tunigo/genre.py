@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 import tunigo
+from tunigo import utils
 
 
 class Genre(object):
@@ -25,26 +26,29 @@ class Genre(object):
                  item_array=None):
 
         if item_array:
-            self._created = int(item_array['created'])
-            self._header_image_url = item_array['headerImageUrl']
-            self._icon_image_url = item_array['iconImageUrl']
-            self._icon_url = item_array['iconUrl']
-            self._id = item_array['id']
-            self._location = item_array['location']
-            self._mood_image_url = item_array['moodImageUrl']
-            self._name = item_array['name']
-            self._number_playlists = int(item_array['numberPlaylists'])
-            self._playlist = tunigo.Playlist(main_genre=self,
-                                             uri=item_array['playlistUri'])
+            utils.set_instance_int_variables(
+                self,
+                ['_created', '_updated', '_version'],
+                item_array)
+            utils.set_instance_string_variables(
+                self,
+                ['_header_image_url', '_icon_image_url', '_icon_url', '_id',
+                 '_location', '_mood_image_url', '_name', '_number_playlists',
+                 '_template_name', '_type'],
+                item_array)
+
+            if 'playlistUri' in item_array:
+                self._playlist = tunigo.Playlist(main_genre=self,
+                                                 uri=item_array['playlistUri'])
+            else:
+                self._playlist = tunigo.Playlist()
+
             self._sub_genres = []
-            for sub_genre in item_array['subGenres']:
-                self._sub_genres.append(SubGenre(key=sub_genre['key'],
-                                                 main_genre=self,
-                                                 name=sub_genre['name']))
-            self._template_name = item_array['templateName']
-            self._type = item_array['type']
-            self._updated = int(item_array['updated'])
-            self._version = int(item_array['version'])
+            if 'subGenres' in item_array:
+                for sub_genre in item_array['subGenres']:
+                    self._sub_genres.append(SubGenre(key=sub_genre['key'],
+                                                     main_genre=self,
+                                                     name=sub_genre['name']))
 
         else:
             self._created = int(created)

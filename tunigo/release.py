@@ -1,5 +1,7 @@
 from __future__ import unicode_literals
 
+from tunigo import utils
+
 
 class Release(object):
 
@@ -23,22 +25,20 @@ class Release(object):
                  item_array=None):
 
         if item_array:
-            self._album_name = item_array['albumName']
-            self._artist_name = item_array['artistName']
-            self._author_ids = item_array['authorIds']
-            self._created = item_array['created']
-            self._description = item_array['description']
-            self._genre_id = item_array['genreId']
-            self._id = item_array['id']
-            self._image = item_array['image']
-            self._location = item_array['location']
-            self._num_tracks = int(item_array['numTracks'])
-            self._publication_date = item_array['publicationDate']
-            self._regions = item_array['regions']
-            self._tags = item_array['tags']
-            self._updated = int(item_array['updated'])
-            self._uri = item_array['uri']
-            self._version = int(item_array['version'])
+            utils.set_instance_string_variables(
+                self,
+                ['_album_name', '_artist_name', '_created', '_description',
+                 '_genre_id', '_id', '_image', '_location',
+                 '_publication_date', '_uri'],
+                item_array)
+            utils.set_instance_array_variables(
+                self,
+                ['_author_ids', '_regions', '_tags'],
+                item_array)
+            utils.set_instance_int_variables(
+                self,
+                ['_num_tracks', '_updated', '_version'],
+                item_array)
 
         else:
             self._album_name = album_name
