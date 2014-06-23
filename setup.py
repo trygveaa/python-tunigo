@@ -11,7 +11,7 @@ def get_version(filename):
 
 
 setup(
-    name='Python-Tunigo',
+    name='tunigo',
     version=get_version('tunigo/__init__.py'),
     url='https://github.com/trygveaa/python-tunigo',
     license='Apache License, Version 2.0',
