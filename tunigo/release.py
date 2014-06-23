@@ -59,18 +59,6 @@ class Release(object):
             self._version = int(version)
 
     @property
-    def uri(self):
-        return self._uri
-
-    @property
-    def artist_name(self):
-        return self._artist_name
-
-    @property
-    def album_name(self):
-        return self._album_name
-
-    @property
     def album_name(self):
         return self._album_name
 
