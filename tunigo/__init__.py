@@ -8,3 +8,12 @@ from tunigo.genre import Genre, SubGenre
 from tunigo.playlist import Playlist
 from tunigo.release import Release
 from tunigo.api import Tunigo
+
+
+__all__ = [
+    'Genre',
+    'Playlist',
+    'Release',
+    'SubGenre',
+    'Tunigo',
+]
