@@ -23,7 +23,11 @@ class Tunigo(object):
                .format(BASE_URL, key, self._region, self._max_results))
         if options:
             uri = '{}&{}'.format(uri, options)
-        return requests.get(uri).json()['items']
+        result = requests.get(uri)
+        if (result.status_code != 200 or
+                result.headers['content-type'] != 'application/json'):
+            return []
+        return result.json()['items']
 
     def get_playlists(self, key, options=''):
         playlists = []
