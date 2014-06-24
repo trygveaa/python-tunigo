@@ -32,6 +32,8 @@ Examples
     for playlist in tunigo.get_featured_playlists():
         print(playlist.title)
 
+See the ``examples/`` directory for further examples.
+
 
 License
 =======
