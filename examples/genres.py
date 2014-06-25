@@ -7,15 +7,16 @@ tunigo = tunigo.Tunigo()
 genres = tunigo.get_genres()
 
 # Returns playlists for a genre.
-genre_playlists = tunigo.get_genre_playlists(genres[0].key)
+genre_playlists = tunigo.get_genre_playlists(genres[0])
 
 # Or use a specific genre key.
 genre_playlists = tunigo.get_genre_playlists('rock')
 
 # Returns playlists for a sub genre.
-genre_playlists = tunigo.get_genre_playlists(
-    genres[0].key,
-    genres[0].sub_genres[0].key)
+genre_playlists = tunigo.get_genre_playlists(sub_genre=genres[0].sub_genres[0])
+
+# Or use specific genre and sub genre keys.
+genre_playlists = tunigo.get_genre_playlists('rock', 'metal')
 
 # Print the name and number of playlists for each genre.
 # All the available fields can be seen in tunigo/genre.py

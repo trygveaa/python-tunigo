@@ -5,7 +5,7 @@ import time
 import requests
 
 from tunigo.cache import Cache
-from tunigo.genre import Genre
+from tunigo.genre import Genre, SubGenre
 from tunigo.playlist import Playlist
 from tunigo.release import Release
 
@@ -65,9 +65,20 @@ class Tunigo(object):
             self._cache.insert(cache_key, genres)
             return genres
 
-    def get_genre_playlists(self, genre_key, subgenre_key=''):
-        if subgenre_key and subgenre_key != 'all':
-            options = 'filter={}'.format(subgenre_key)
+    def get_genre_playlists(self, genre=None, sub_genre=None):
+        if type(genre) == Genre:
+            genre_key = genre.key
+        else:
+            genre_key = genre
+        if type(sub_genre) == SubGenre:
+            sub_genre_key = sub_genre.key
+            if not genre_key:
+                genre_key = sub_genre.main_genre.key
+        else:
+            sub_genre_key = sub_genre
+
+        if sub_genre_key and sub_genre_key != 'all':
+            options = 'filter={}'.format(sub_genre_key)
         else:
             options = ''
         return self.get_playlists(genre_key, options)
