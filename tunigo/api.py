@@ -15,7 +15,7 @@ BASE_URL = 'https://api.tunigo.com/v3/space'
 
 class Tunigo(object):
 
-    def __init__(self, region='all', max_results='1000', cache_time=3600):
+    def __init__(self, region='all', max_results=1000, cache_time=3600):
         self._region = region
         self._max_results = max_results
         self._cache = Cache(cache_time)
