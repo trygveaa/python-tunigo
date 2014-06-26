@@ -146,7 +146,10 @@ class SubGenre(object):
 
     def __init__(self, key='', main_genre=None, name=''):
         self._key = key
-        self._main_genre = main_genre
+        if type(main_genre) == Genre:
+            self._main_genre = main_genre
+        else:
+            self._main_genre = Genre(template_name=main_genre)
         self._name = name
 
     @property
