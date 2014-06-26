@@ -20,6 +20,12 @@ class Tunigo(object):
         self._max_results = max_results
         self._cache = Cache(cache_time)
 
+    def __repr__(self):
+        return "Tunigo(region='{}', max_results={}, cache_time={})".format(
+            self._region,
+            self._max_results,
+            self._cache._cache_time)
+
     def _get(self, key, options=''):
         uri = ('{}/{}?region={}&per_page={}'
                .format(BASE_URL, key, self._region, self._max_results))

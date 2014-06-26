@@ -58,6 +58,14 @@ class Release(object):
             self._uri = uri
             self._version = int(version)
 
+    def __repr__(self):
+        return "Release(uri='{}')".format(self._uri)
+
+    def __str__(self):
+        return '{} - {} ({})'.format(self._artist_name,
+                                     self._album_name,
+                                     self._uri)
+
     @property
     def album_name(self):
         return self._album_name

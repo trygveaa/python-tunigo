@@ -75,6 +75,12 @@ class Playlist(object):
             self._uri = uri
             self._version = int(version)
 
+    def __repr__(self):
+        return "Playlist(uri='{}')".format(self._uri)
+
+    def __str__(self):
+        return '{} ({})'.format(self._title, self._uri)
+
     @property
     def created(self):
         return self._created

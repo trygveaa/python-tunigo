@@ -73,6 +73,12 @@ class Genre(object):
             self._updated = int(updated)
             self._version = int(version)
 
+    def __repr__(self):
+        return "Genre(template_name='{}')".format(self._template_name)
+
+    def __str__(self):
+        return self._template_name
+
     @property
     def created(self):
         return self._created
@@ -151,6 +157,13 @@ class SubGenre(object):
         else:
             self._main_genre = Genre(template_name=main_genre)
         self._name = name
+
+    def __repr__(self):
+        return ("SubGenre(main_genre='{}', key='{}')"
+                .format(self._main_genre, self._key))
+
+    def __str__(self):
+        return '{}/{}'.format(self._main_genre, self._key)
 
     @property
     def key(self):

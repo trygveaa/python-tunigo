@@ -9,6 +9,9 @@ class Cache(object):
         self._cache = {}
         self._cache_time = cache_time
 
+    def __repr__(self):
+        return 'Cache(cache_time={})'.format(self._cache_time)
+
     def _cache_valid(self, key):
         return (key in self._cache and
                 self._cache[key]['access_time'] >
