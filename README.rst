@@ -70,6 +70,12 @@ Project resources
 Changelog
 =========
 
+v0.1.2 (2014-08-03)
+-------------------
+
+- Fix that some genres were not listed by using the same query options as
+  play.spotify.com.
+
 v0.1.1 (2014-07-21)
 -------------------
 
