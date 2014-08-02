@@ -11,6 +11,7 @@ from tunigo.release import Release
 
 
 BASE_URL = 'https://api.tunigo.com/v3/space'
+BASE_QUERY = 'locale=en&product=premium&version=6.38.31&platform=web'
 
 
 class Tunigo(object):
@@ -27,8 +28,9 @@ class Tunigo(object):
             self._cache._cache_time)
 
     def _get(self, key, options=''):
-        uri = ('{}/{}?region={}&per_page={}'
-               .format(BASE_URL, key, self._region, self._max_results))
+        uri = ('{}/{}?region={}&per_page={}&{}'
+               .format(BASE_URL, key, self._region,
+                       self._max_results, BASE_QUERY))
         if options:
             uri = '{}&{}'.format(uri, options)
         result = requests.get(uri)
