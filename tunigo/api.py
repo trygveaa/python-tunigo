@@ -35,7 +35,7 @@ class Tunigo(object):
             uri = '{}&{}'.format(uri, options)
         result = requests.get(uri)
         if (result.status_code != 200 or
-                result.headers['content-type'] != 'application/json'):
+                'application/json' not in result.headers['content-type']):
             return []
         return result.json()['items']
 
