@@ -70,6 +70,11 @@ Project resources
 Changelog
 =========
 
+v0.1.3 (2014-11-29)
+-------------------
+
+- Fix check for content-type so it doesn't fail after a change in the API.
+
 v0.1.2 (2014-08-03)
 -------------------
 
