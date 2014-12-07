@@ -17,7 +17,19 @@ any time.
 Installation
 ============
 
-To install Python-Tunigo, you can use pip::
+Debian/Ubuntu/Raspbian: Install the ``python-tunigo`` or the ``python3-tunigo``
+package from `apt.mopidy.com <http://apt.mopidy.com/>`_::
+
+    sudo apt-get install python-tunigo
+    sudo apt-get install python3-tunigo
+
+Arch Linux: Install the ``python2-tunigo`` or the ``python-tunigo`` package
+from `AUR <https://aur.archlinux.org/packages/mopidy-spotify/>`_, e.g.::
+
+    yaourt -S python2-tunigo
+    yaourt -S python-tunigo
+
+Else: Install the ``tunigo`` package from PyPI::
 
     pip install tunigo
 
