@@ -1,7 +1,13 @@
-include .coveragerc
+include *.py
+include *.rst
+include *.txt
 include .travis.yml
 include LICENSE
 include MANIFEST.in
-include README.rst
+include tox.ini
+
+recursive-include examples *.py
 
 recursive-include tests *.py
+
+global-exclude __pycache__/*
