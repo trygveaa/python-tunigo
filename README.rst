@@ -85,6 +85,7 @@ Changelog
 v1.0.0 (UNRELEASED)
 -------------------
 
+- Add the new field Release.artist_uri.
 - Fix type of Release.created to be int all places.
 
 v0.1.3 (2014-11-29)

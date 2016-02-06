@@ -8,6 +8,7 @@ class Release(object):
     def __init__(self,
                  album_name='',
                  artist_name='',
+                 artist_uri='',
                  author_ids=[],
                  created=0,
                  description='',
@@ -35,13 +36,15 @@ class Release(object):
                 item_array)
             utils.set_instance_string_variables(
                 self,
-                ['_album_name', '_artist_name', '_description', '_genre_id',
-                 '_id', '_image', '_location', '_publication_date', '_uri'],
+                ['_album_name', '_artist_name', '_artist_uri', '_description',
+                 '_genre_id', '_id', '_image', '_location',
+                 '_publication_date', '_uri'],
                 item_array)
 
         else:
             self._album_name = album_name
             self._artist_name = artist_name
+            self._artist_uri = artist_uri
             self._author_ids = author_ids
             self._created = int(created)
             self._description = description
@@ -72,6 +75,10 @@ class Release(object):
     @property
     def artist_name(self):
         return self._artist_name
+
+    @property
+    def artist_uri(self):
+        return self._artist_uri
 
     @property
     def author_ids(self):
