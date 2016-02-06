@@ -66,7 +66,6 @@ See the ``examples/`` directory for further examples.
 License
 =======
 
-Python-Tunigo is copyright 2014 Trygve Aaberge and contributors.
 Python-Tunigo is licensed under the `Apache License, Version 2.0
 <http://www.apache.org/licenses/LICENSE-2.0>`_.
 
