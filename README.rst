@@ -82,6 +82,11 @@ Project resources
 Changelog
 =========
 
+v1.0.0 (UNRELEASED)
+-------------------
+
+- Fix type of Release.created to be int all places.
+
 v0.1.3 (2014-11-29)
 -------------------
 
@@ -96,9 +101,9 @@ v0.1.2 (2014-08-03)
 v0.1.1 (2014-07-21)
 -------------------
 
-- Allow Genre- and SubGenre-objects as arguments to get_genre_playlists
-- Allow a SubGenre to be created with main_genre as a string
-- Add __repr__ and __str__ methods to classes
+- Allow Genre- and SubGenre-objects as arguments to get_genre_playlists.
+- Allow a SubGenre to be created with main_genre as a string.
+- Add __repr__ and __str__ methods to classes.
 
 v0.1.0 (2014-06-24)
 -------------------

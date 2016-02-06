@@ -27,9 +27,8 @@ class Release(object):
         if item_array:
             utils.set_instance_string_variables(
                 self,
-                ['_album_name', '_artist_name', '_created', '_description',
-                 '_genre_id', '_id', '_image', '_location',
-                 '_publication_date', '_uri'],
+                ['_album_name', '_artist_name', '_description', '_genre_id',
+                 '_id', '_image', '_location', '_publication_date', '_uri'],
                 item_array)
             utils.set_instance_array_variables(
                 self,
@@ -37,14 +36,14 @@ class Release(object):
                 item_array)
             utils.set_instance_int_variables(
                 self,
-                ['_num_tracks', '_updated', '_version'],
+                ['_created', '_num_tracks', '_updated', '_version'],
                 item_array)
 
         else:
             self._album_name = album_name
             self._artist_name = artist_name
             self._author_ids = author_ids
-            self._created = created
+            self._created = int(created)
             self._description = description
             self._genre_id = genre_id
             self._id = id
