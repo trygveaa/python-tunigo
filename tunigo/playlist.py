@@ -119,7 +119,7 @@ class Playlist(object):
 
     @property
     def sub_genre_template(self):
-        return self._sub_genre.template_name
+        return self._sub_genre.key
 
     @property
     def title(self):
