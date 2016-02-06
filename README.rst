@@ -2,6 +2,22 @@
 Python-Tunigo
 *************
 
+.. image:: https://img.shields.io/pypi/v/tunigo.svg?style=flat
+    :target: https://pypi.python.org/pypi/tunigo/
+    :alt: Latest PyPI version
+
+.. image:: https://img.shields.io/pypi/dm/tunigo.svg?style=flat
+    :target: https://pypi.python.org/pypi/tunigo/
+    :alt: Number of PyPI downloads
+
+.. image:: https://img.shields.io/travis/trygveaa/python-tunigo/master.png?style=flat
+    :target: https://travis-ci.org/trygveaa/python-tunigo
+    :alt: Travis CI build status
+
+.. image:: https://img.shields.io/coveralls/trygveaa/python-tunigo/master.svg?style=flat
+   :target: https://coveralls.io/r/trygveaa/python-tunigo?branch=master
+   :alt: Test coverage
+
 Python-Tunigo is a python package that allows for simple access to `Tunigo
 <http://tunigo.com/>`_'s API. This is an API for fetching featured playlists and
 new releases for `Spotify <https://www.spotify.com/>`_. It supports featured
@@ -61,22 +77,6 @@ Project resources
 - `Source code <https://github.com/trygveaa/python-tunigo>`_
 - `Issue tracker <https://github.com/trygveaa/python-tunigo/issues>`_
 - `Download development snapshot <https://github.com/trygveaa/python-tunigo/archive/master.tar.gz#egg=python-tunigo-dev>`_
-
-.. image:: https://img.shields.io/pypi/v/tunigo.svg?style=flat
-    :target: https://pypi.python.org/pypi/tunigo/
-    :alt: Latest PyPI version
-
-.. image:: https://img.shields.io/pypi/dm/tunigo.svg?style=flat
-    :target: https://pypi.python.org/pypi/tunigo/
-    :alt: Number of PyPI downloads
-
-.. image:: https://img.shields.io/travis/trygveaa/python-tunigo/master.png?style=flat
-    :target: https://travis-ci.org/trygveaa/python-tunigo
-    :alt: Travis CI build status
-
-.. image:: https://img.shields.io/coveralls/trygveaa/python-tunigo/master.svg?style=flat
-   :target: https://coveralls.io/r/trygveaa/python-tunigo?branch=master
-   :alt: Test coverage
 
 
 Changelog
