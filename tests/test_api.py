@@ -13,6 +13,14 @@ from tunigo.release import Release
 class TestApi(object):
 
     @responses.activate
+    def test_repr(self):
+        tunigo = Tunigo(region='no', max_results=100, cache_time=3600)
+
+        assert (
+            tunigo.__repr__() ==
+            "Tunigo(region='no', max_results=100, cache_time=3600)")
+
+    @responses.activate
     def test_returns_items(self):
         max_results = 100
         tunigo = Tunigo(max_results=max_results)

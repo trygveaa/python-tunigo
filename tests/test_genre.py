@@ -6,6 +6,16 @@ from tunigo.playlist import Playlist
 
 class TestGenre(object):
 
+    def test_repr(self):
+        genre = Genre(template_name='genre')
+
+        assert genre.__repr__() == "Genre(template_name='genre')"
+
+    def test_str(self):
+        genre = Genre(template_name='genre')
+
+        assert genre.__str__() == 'genre'
+
     def test_creates_instance_from_item_array(self):
         genre = Genre(item_array={
             'created': 1,
@@ -47,6 +57,7 @@ class TestGenre(object):
         assert isinstance(genre.playlist, Playlist)
         assert genre.playlist.main_genre == genre
         assert genre.playlist.uri == 'some:playlist:uri'
+        assert genre.playlist_uri == 'some:playlist:uri'
 
     def test_creates_playlist_from_playlist_uri_in_arguments(self):
         genre = Genre(playlist_uri='some:playlist:uri')
@@ -54,6 +65,7 @@ class TestGenre(object):
         assert isinstance(genre.playlist, Playlist)
         assert genre.playlist.main_genre == genre
         assert genre.playlist.uri == 'some:playlist:uri'
+        assert genre.playlist_uri == 'some:playlist:uri'
 
     def test_creates_sub_genres_from_sub_genres_in_item_array(self):
         genre = Genre(item_array={
@@ -80,6 +92,18 @@ class TestGenre(object):
 
 
 class TestSubGenre(object):
+
+    def test_repr(self):
+        sub_genre = SubGenre(key='sub_genre', main_genre='genre')
+
+        assert (
+            sub_genre.__repr__() ==
+            "SubGenre(main_genre='genre', key='sub_genre')")
+
+    def test_str(self):
+        sub_genre = SubGenre(key='sub_genre', main_genre='genre')
+
+        assert sub_genre.__str__() == 'genre/sub_genre'
 
     def test_creates_empty_main_genre_if_not_given(self):
         sub_genre = SubGenre()

@@ -5,6 +5,19 @@ from tunigo.release import Release
 
 class TestRelease(object):
 
+    def test_repr(self):
+        release = Release(uri='some:uri')
+
+        assert release.__repr__() == "Release(uri='some:uri')"
+
+    def test_str(self):
+        release = Release(
+            artist_name='Some artist',
+            album_name='Some album',
+            uri='some:uri')
+
+        assert release.__str__() == 'Some artist - Some album (some:uri)'
+
     def test_creates_instance_from_item_array(self):
         release = Release(item_array={
             'albumName': 'Some Album',

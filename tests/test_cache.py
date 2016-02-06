@@ -9,6 +9,11 @@ from tunigo.cache import Cache
 
 class TestCache(object):
 
+    def test_repr(self):
+        cache = Cache(cache_time=3600)
+
+        assert cache.__repr__() == 'Cache(cache_time=3600)'
+
     def test_returns_none_for_unknown_key(self):
         cache = Cache(100)
 

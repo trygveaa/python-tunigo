@@ -6,6 +6,16 @@ from tunigo.playlist import Playlist
 
 class TestPlaylist(object):
 
+    def test_repr(self):
+        playlist = Playlist(uri='some:uri')
+
+        assert playlist.__repr__() == "Playlist(uri='some:uri')"
+
+    def test_str(self):
+        playlist = Playlist(title='Title', uri='some:uri')
+
+        assert playlist.__str__() == 'Title (some:uri)'
+
     def test_creates_instance_from_item_array(self):
         playlist = Playlist(item_array={
             'created': 1,
@@ -42,10 +52,12 @@ class TestPlaylist(object):
         assert isinstance(playlist.main_genre, Genre)
         assert playlist.main_genre.playlist == playlist
         assert playlist.main_genre.template_name == 'Some main genre template'
+        assert playlist.main_genre_template == 'Some main genre template'
 
         assert isinstance(playlist.sub_genre, SubGenre)
         assert playlist.sub_genre.main_genre == playlist.main_genre
         assert playlist.sub_genre.key == 'Some sub genre template'
+        assert playlist.sub_genre_template == 'Some sub genre template'
 
     def test_creates_genre_from_template_in_arguments(self):
         playlist = Playlist(
@@ -56,7 +68,9 @@ class TestPlaylist(object):
         assert isinstance(playlist.main_genre, Genre)
         assert playlist.main_genre.playlist == playlist
         assert playlist.main_genre.template_name == 'Some main genre template'
+        assert playlist.main_genre_template == 'Some main genre template'
 
         assert isinstance(playlist.sub_genre, SubGenre)
         assert playlist.sub_genre.main_genre == playlist.main_genre
         assert playlist.sub_genre.key == 'Some sub genre template'
+        assert playlist.sub_genre_template == 'Some sub genre template'
