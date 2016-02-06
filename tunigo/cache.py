@@ -21,7 +21,7 @@ class Cache(object):
         if self._cache_valid(key):
             return self._cache[key]['obj']
         else:
-            return False
+            return None
 
     def insert(self, key, obj):
         if self._cache_time:
