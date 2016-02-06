@@ -28,13 +28,13 @@ class Genre(object):
         if item_array:
             utils.set_instance_int_variables(
                 self,
-                ['_created', '_updated', '_version'],
+                ['_created', '_number_playlists', '_updated', '_version'],
                 item_array)
             utils.set_instance_string_variables(
                 self,
                 ['_header_image_url', '_icon_image_url', '_icon_url', '_id',
-                 '_location', '_mood_image_url', '_name', '_number_playlists',
-                 '_template_name', '_type'],
+                 '_location', '_mood_image_url', '_name', '_template_name',
+                 '_type'],
                 item_array)
 
             if 'playlistUri' in item_array:
