@@ -43,7 +43,7 @@ class Tunigo(object):
         if not cache_key:
             cache_key = 'playlists-{}-{}'.format(key, options)
         cache_value = self._cache.get(cache_key)
-        if cache_value:
+        if cache_value is not None:
             return cache_value
         else:
             playlists = []
@@ -63,7 +63,7 @@ class Tunigo(object):
     def get_genres(self):
         cache_key = 'genres'
         cache_value = self._cache.get(cache_key)
-        if cache_value:
+        if cache_value is not None:
             return cache_value
         else:
             genres = []
@@ -94,7 +94,7 @@ class Tunigo(object):
     def get_new_releases(self):
         cache_key = 'releases'
         cache_value = self._cache.get(cache_key)
-        if cache_value:
+        if cache_value is not None:
             return cache_value
         else:
             releases = []
