@@ -16,7 +16,7 @@ BASE_QUERY = 'locale=en&product=premium&version=6.38.31&platform=web'
 
 class Tunigo(object):
 
-    def __init__(self, region='all', max_results=1000, cache_time=3600):
+    def __init__(self, region=None, max_results=1000, cache_time=3600):
         self._region = region
         self._max_results = max_results
         self._cache = Cache(cache_time)
@@ -28,9 +28,10 @@ class Tunigo(object):
             self._cache._cache_time)
 
     def _get(self, key, options=''):
-        uri = ('{}/{}?region={}&per_page={}&{}'
-               .format(BASE_URL, key, self._region,
-                       self._max_results, BASE_QUERY))
+        uri = ('{}/{}?{}&per_page={}'
+               .format(BASE_URL, key, BASE_QUERY, self._max_results))
+        if self._region:
+            uri = '{}&region={}'.format(uri, self._region)
         if options:
             uri = '{}&{}'.format(uri, options)
         result = requests.get(uri)

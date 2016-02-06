@@ -85,6 +85,7 @@ Changelog
 v1.0.0 (UNRELEASED)
 -------------------
 
+- Don't specify region in API call if not given. (Fixes: #2)
 - Add the new field Release.artist_uri.
 - Fix type of Release.created to be int all places.
 
