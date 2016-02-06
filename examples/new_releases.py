@@ -1,6 +1,6 @@
-import tunigo
+from tunigo import Tunigo
 
-tunigo = tunigo.Tunigo()
+tunigo = Tunigo()
 
 # Returns new album releases.
 releases = tunigo.get_new_releases()

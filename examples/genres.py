@@ -1,6 +1,6 @@
-import tunigo
+from tunigo import Tunigo
 
-tunigo = tunigo.Tunigo()
+tunigo = Tunigo()
 
 # Returns the available genres, including sub genres and a playlist containing
 # top tracks for each genre.

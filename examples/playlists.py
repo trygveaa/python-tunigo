@@ -1,6 +1,6 @@
-import tunigo
+from tunigo import Tunigo
 
-tunigo = tunigo.Tunigo()
+tunigo = Tunigo()
 
 # Returns the currently featured playlists.
 featured_playlists = tunigo.get_featured_playlists()

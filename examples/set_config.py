@@ -1,6 +1,6 @@
-import tunigo
+from tunigo import Tunigo
 
-tunigo = tunigo.Tunigo(
+tunigo = Tunigo(
     # Region to use in API calls. Should be a two letter country code.
     # Defaults to 'all'.
     region='no',
