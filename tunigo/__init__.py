@@ -7,7 +7,7 @@ from tunigo.playlist import Playlist
 from tunigo.release import Release
 
 
-__version__ = '0.1.3'
+__version__ = '1.0.0'
 
 
 __all__ = [

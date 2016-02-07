@@ -81,7 +81,7 @@ Project resources
 Changelog
 =========
 
-v1.0.0 (UNRELEASED)
+v1.0.0 (2016-02-07)
 -------------------
 
 - Add support for specifying a proxy to use.
