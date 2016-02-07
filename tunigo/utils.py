@@ -17,8 +17,8 @@ def set_instance_array_variables(instance, keys, values):
 
 
 def set_instance_int_variables(instance, keys, values):
-    set_instance_variables(instance, keys, values,
-                           lambda x: int(x) if x else 0)
+    set_instance_variables(
+        instance, keys, values, lambda x: int(x) if x else 0)
 
 
 def set_instance_string_variables(instance, keys, values):

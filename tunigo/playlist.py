@@ -6,22 +6,23 @@ from tunigo import utils
 
 class Playlist(object):
 
-    def __init__(self,
-                 created=0,
-                 description='',
-                 id='',
-                 image='',
-                 location='',
-                 main_genre=None,
-                 main_genre_template='',
-                 num_subscribers=0,
-                 sub_genre=None,
-                 sub_genre_template='',
-                 title='',
-                 updated=0,
-                 uri='',
-                 version=0,
-                 item_array=None):
+    def __init__(
+            self,
+            created=0,
+            description='',
+            id='',
+            image='',
+            location='',
+            main_genre=None,
+            main_genre_template='',
+            num_subscribers=0,
+            sub_genre=None,
+            sub_genre_template='',
+            title='',
+            updated=0,
+            uri='',
+            version=0,
+            item_array=None):
 
         if item_array:
             utils.set_instance_int_variables(
@@ -68,8 +69,9 @@ class Playlist(object):
             self._num_subscribers = int(num_subscribers)
 
             if sub_genre_template:
-                self._sub_genre = tunigo.SubGenre(key=sub_genre_template,
-                                                  main_genre=self._main_genre)
+                self._sub_genre = tunigo.SubGenre(
+                    key=sub_genre_template,
+                    main_genre=self._main_genre)
             elif isinstance(sub_genre, tunigo.SubGenre):
                 self._sub_genre = sub_genre
                 self._sub_genre._main_genre = self._main_genre

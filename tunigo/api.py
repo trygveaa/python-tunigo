@@ -54,9 +54,10 @@ class Tunigo(object):
             return playlists
 
     def get_featured_playlists(self):
-        return self.get_playlists('featured-playlists',
-                                  'dt={}'.format(time.strftime('%FT%H:01:00')),
-                                  'featured-playlists')
+        return self.get_playlists(
+            'featured-playlists',
+            'dt={}'.format(time.strftime('%FT%H:01:00')),
+            'featured-playlists')
 
     def get_top_lists(self):
         return self.get_playlists('toplists')

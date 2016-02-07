@@ -5,25 +5,26 @@ from tunigo import utils
 
 class Release(object):
 
-    def __init__(self,
-                 album_name='',
-                 artist_name='',
-                 artist_uri='',
-                 author_ids=[],
-                 created=0,
-                 description='',
-                 genre_id='',
-                 id='',
-                 image='',
-                 location='',
-                 num_tracks=0,
-                 publication_date='',
-                 regions=[],
-                 tags=[],
-                 updated=0,
-                 uri='',
-                 version=0,
-                 item_array=None):
+    def __init__(
+            self,
+            album_name='',
+            artist_name='',
+            artist_uri='',
+            author_ids=[],
+            created=0,
+            description='',
+            genre_id='',
+            id='',
+            image='',
+            location='',
+            num_tracks=0,
+            publication_date='',
+            regions=[],
+            tags=[],
+            updated=0,
+            uri='',
+            version=0,
+            item_array=None):
 
         if item_array:
             utils.set_instance_array_variables(
@@ -64,9 +65,10 @@ class Release(object):
         return "Release(uri='{}')".format(self._uri)
 
     def __str__(self):
-        return '{} - {} ({})'.format(self._artist_name,
-                                     self._album_name,
-                                     self._uri)
+        return '{} - {} ({})'.format(
+            self._artist_name,
+            self._album_name,
+            self._uri)
 
     @property
     def album_name(self):

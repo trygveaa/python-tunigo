@@ -6,24 +6,25 @@ from tunigo import utils
 
 class Genre(object):
 
-    def __init__(self,
-                 created=0,
-                 header_image_url='',
-                 icon_image_url='',
-                 icon_url='',
-                 id='',
-                 location='',
-                 mood_image_url='',
-                 name='',
-                 number_playlists=0,
-                 playlist=None,
-                 playlist_uri='',
-                 sub_genres=[],
-                 template_name='',
-                 type='',
-                 updated=0,
-                 version=0,
-                 item_array=None):
+    def __init__(
+            self,
+            created=0,
+            header_image_url='',
+            icon_image_url='',
+            icon_url='',
+            id='',
+            location='',
+            mood_image_url='',
+            name='',
+            number_playlists=0,
+            playlist=None,
+            playlist_uri='',
+            sub_genres=[],
+            template_name='',
+            type='',
+            updated=0,
+            version=0,
+            item_array=None):
 
         if item_array:
             utils.set_instance_int_variables(
@@ -38,17 +39,19 @@ class Genre(object):
                 item_array)
 
             if 'playlistUri' in item_array:
-                self._playlist = tunigo.Playlist(main_genre=self,
-                                                 uri=item_array['playlistUri'])
+                self._playlist = tunigo.Playlist(
+                    main_genre=self,
+                    uri=item_array['playlistUri'])
             else:
                 self._playlist = tunigo.Playlist(main_genre=self)
 
             self._sub_genres = []
             if 'subGenres' in item_array:
                 for sub_genre in item_array['subGenres']:
-                    self._sub_genres.append(SubGenre(key=sub_genre['key'],
-                                                     main_genre=self,
-                                                     name=sub_genre['name']))
+                    self._sub_genres.append(SubGenre(
+                        key=sub_genre['key'],
+                        main_genre=self,
+                        name=sub_genre['name']))
 
         else:
             self._created = int(created)
@@ -62,8 +65,9 @@ class Genre(object):
             self._number_playlists = int(number_playlists)
 
             if playlist_uri:
-                self._playlist = tunigo.Playlist(main_genre=self,
-                                                 uri=playlist_uri)
+                self._playlist = tunigo.Playlist(
+                    main_genre=self,
+                    uri=playlist_uri)
             elif isinstance(playlist, tunigo.Playlist):
                 self._playlist = playlist
                 self._playlist._main_genre = self
