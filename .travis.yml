@@ -6,10 +6,18 @@ env:
   - TOX_ENV=py27
   - TOX_ENV=py33
   - TOX_ENV=py34
-  - TOX_ENV=py35
+#  - TOX_ENV=py35
   - TOX_ENV=pypy
   - TOX_ENV=pypy3
   - TOX_ENV=flake8
+
+# It is currently necessary to specify python 3.5 when using py35 on Travis,
+# see https://github.com/travis-ci/travis-ci/issues/4794
+matrix:
+  include:
+    - python: 3.5
+      env:
+        - TOX_ENV=py35
 
 install:
   - "pip install tox"
