@@ -16,10 +16,16 @@ BASE_QUERY = 'locale=en&product=premium&version=6.38.31&platform=web'
 
 class Tunigo(object):
 
-    def __init__(self, region=None, max_results=1000, cache_time=3600):
+    def __init__(
+            self,
+            region=None,
+            max_results=1000,
+            cache_time=3600,
+            proxies=None):
         self._region = region
         self._max_results = max_results
         self._cache = Cache(cache_time)
+        self._proxies = proxies
 
     def __repr__(self):
         return "Tunigo(region='{}', max_results={}, cache_time={})".format(
@@ -34,7 +40,7 @@ class Tunigo(object):
             uri = '{}&region={}'.format(uri, self._region)
         if options:
             uri = '{}&{}'.format(uri, options)
-        result = requests.get(uri)
+        result = requests.get(uri, proxies=self._proxies)
         if (result.status_code != 200 or
                 'application/json' not in result.headers['content-type']):
             return []
