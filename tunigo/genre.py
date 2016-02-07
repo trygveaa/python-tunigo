@@ -41,7 +41,7 @@ class Genre(object):
                 self._playlist = tunigo.Playlist(main_genre=self,
                                                  uri=item_array['playlistUri'])
             else:
-                self._playlist = tunigo.Playlist()
+                self._playlist = tunigo.Playlist(main_genre=self)
 
             self._sub_genres = []
             if 'subGenres' in item_array:
@@ -64,8 +64,11 @@ class Genre(object):
             if playlist_uri:
                 self._playlist = tunigo.Playlist(main_genre=self,
                                                  uri=playlist_uri)
-            else:
+            elif isinstance(playlist, tunigo.Playlist):
                 self._playlist = playlist
+                self._playlist._main_genre = self
+            else:
+                self._playlist = tunigo.Playlist(main_genre=self)
 
             self._sub_genres = sub_genres
             self._template_name = template_name

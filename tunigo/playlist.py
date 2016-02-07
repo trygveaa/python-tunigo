@@ -39,14 +39,14 @@ class Playlist(object):
                     playlist=self,
                     template_name=item_array['mainGenreTemplate'])
             else:
-                self._main_genre = tunigo.Genre()
+                self._main_genre = tunigo.Genre(playlist=self)
 
             if 'subGenreTemplate' in item_array:
                 self._sub_genre = tunigo.SubGenre(
                     key=item_array['subGenreTemplate'],
                     main_genre=self._main_genre)
             else:
-                self._sub_genre = tunigo.SubGenre()
+                self._sub_genre = tunigo.SubGenre(main_genre=self._main_genre)
 
         else:
             self._created = int(created)
@@ -59,16 +59,22 @@ class Playlist(object):
                 self._main_genre = tunigo.Genre(
                     playlist=self,
                     template_name=main_genre_template)
-            else:
+            elif isinstance(main_genre, tunigo.Genre):
                 self._main_genre = main_genre
+                self._main_genre._playlist = self
+            else:
+                self._main_genre = tunigo.Genre(playlist=self)
 
             self._num_subscribers = int(num_subscribers)
 
             if sub_genre_template:
                 self._sub_genre = tunigo.SubGenre(key=sub_genre_template,
                                                   main_genre=self._main_genre)
-            else:
+            elif isinstance(sub_genre, tunigo.SubGenre):
                 self._sub_genre = sub_genre
+                self._sub_genre._main_genre = self._main_genre
+            else:
+                self._sub_genre = tunigo.SubGenre(main_genre=self._main_genre)
 
             self._title = title
             self._updated = int(updated)

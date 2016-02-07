@@ -43,6 +43,7 @@ class TestGenre(object):
         assert genre.name == 'Some name'
         assert genre.number_playlists == 2
         assert isinstance(genre.playlist, Playlist)
+        assert genre.playlist.main_genre == genre
         assert genre.sub_genres == []
         assert genre.template_name == 'Some template name'
         assert genre.type == 'Some type'
@@ -66,6 +67,21 @@ class TestGenre(object):
         assert genre.playlist.main_genre == genre
         assert genre.playlist.uri == 'some:playlist:uri'
         assert genre.playlist_uri == 'some:playlist:uri'
+
+    def test_sets_playlist_to_given_playlist_instance_in_arguments(self):
+        playlist = Playlist(uri='some:playlist:uri')
+        genre = Genre(playlist=playlist)
+
+        assert isinstance(genre.playlist, Playlist)
+        assert genre.playlist.main_genre == genre
+        assert genre.playlist == playlist
+        assert genre.playlist_uri == 'some:playlist:uri'
+
+    def test_creates_empty_playlist_if_not_given(self):
+        genre = Genre()
+
+        assert isinstance(genre.playlist, Playlist)
+        assert genre.playlist.main_genre == genre
 
     def test_creates_sub_genres_from_sub_genres_in_item_array(self):
         genre = Genre(item_array={

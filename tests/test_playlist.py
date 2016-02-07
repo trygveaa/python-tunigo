@@ -36,8 +36,10 @@ class TestPlaylist(object):
         assert playlist.image == 'Some image'
         assert playlist.location == 'Some location'
         assert isinstance(playlist.main_genre, Genre)
+        assert playlist.main_genre.playlist == playlist
         assert playlist.num_subscribers == 2
         assert isinstance(playlist.sub_genre, SubGenre)
+        assert playlist.sub_genre.main_genre == playlist.main_genre
         assert playlist.title == 'Some title'
         assert playlist.updated == 3
         assert playlist.uri == 'some:uri'
@@ -74,3 +76,27 @@ class TestPlaylist(object):
         assert playlist.sub_genre.main_genre == playlist.main_genre
         assert playlist.sub_genre.key == 'Some sub genre template'
         assert playlist.sub_genre_template == 'Some sub genre template'
+
+    def test_sets_genre_to_given_genre_instance_in_arguments(self):
+        genre = Genre(template_name='Some main genre template')
+        sub_genre = SubGenre(key='Some sub genre template')
+        playlist = Playlist(main_genre=genre, sub_genre=sub_genre)
+
+        assert isinstance(playlist.main_genre, Genre)
+        assert playlist.main_genre.playlist == playlist
+        assert playlist.main_genre == genre
+        assert playlist.main_genre_template == 'Some main genre template'
+
+        assert isinstance(playlist.sub_genre, SubGenre)
+        assert playlist.sub_genre.main_genre == playlist.main_genre
+        assert playlist.sub_genre == sub_genre
+        assert playlist.sub_genre_template == 'Some sub genre template'
+
+    def test_creates_empty_genre_if_not_given(self):
+        playlist = Playlist()
+
+        assert isinstance(playlist.main_genre, Genre)
+        assert playlist.main_genre.playlist == playlist
+
+        assert isinstance(playlist.sub_genre, SubGenre)
+        assert playlist.sub_genre.main_genre == playlist.main_genre
