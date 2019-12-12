@@ -1,3 +1,12 @@
+*******
+WARNING
+*******
+
+As of 2019, **the Tunigo service is no longer operational**. Thus, the
+maintenance of this library has been stopped. Some or all of the functionality
+this extension provided is available through the `Spotify Web API
+<https://developer.spotify.com/documentation/web-api/>`_.
+
 *************
 Python-Tunigo
 *************
